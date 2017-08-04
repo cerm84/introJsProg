@@ -29,3 +29,17 @@ for(var key in box){
     console.log(key); //returns the keys of the object
     console.log(box[key]) //return the values of the object
 }
+
+/*      ARRAYS      */
+var box = [];
+box[0] = true;
+box[1] = 'meow';
+box.push({'hello':'goodbay'});
+
+var i = 0;
+
+box[i]; // true;
+box[1]; // 'meow'
+box.pop(); //{'hello': 'goodbay'} returns the last item of the array and delete it
+console.log(box); // [true, 'meow']
+
