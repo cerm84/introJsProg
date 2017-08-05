@@ -43,3 +43,32 @@ box[1]; // 'meow'
 box.pop(); //{'hello': 'goodbay'} returns the last item of the array and delete it
 console.log(box); // [true, 'meow']
 
+box['size'] = 9;
+box['0'] = 'meow';
+
+box['size']; //9, in JS an array is an object that we can add atributes (properties) even string index
+box[0]; //meow
+box.size; //9
+
+for(var k in box){
+    console.log(k); //0 1 size
+}
+
+for(var k in box){
+    console.log(box[k]); //meow meow 9.. console.log(box.k) box.k doesnt work
+}
+
+box.push('Whohoo!');
+
+for(var i = 0; i < box.length; i++){
+    console.log(i); //0 1 2
+}
+
+box.push('Whohoo!');
+
+for(var i = 0; i < box.length; i++){
+    console.log(box[i]); //meow meow whohoo!
+}
+
+box[10] = 'lets see'; // box.lenght is 11, lenght looks for the highes index
+//all values in betwenn without anything in them are undefined
