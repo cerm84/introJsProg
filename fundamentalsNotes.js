@@ -72,3 +72,56 @@ for(var i = 0; i < box.length; i++){
 
 box[10] = 'lets see'; // box.lenght is 11, lenght looks for the highes index
 //all values in betwenn without anything in them are undefined
+
+/*  FUNCTIONS   */
+var nameImprover = function(name, adj) {
+    return 'Col ' + name + ' Mc' + adj + ' pants.';
+};
+
+var add = function(a, b){
+    return a + b;
+};
+
+add(3, 4, 5); //returns 7, the function ignores the extra parameter
+
+var add = function(a, b){
+    console.log(arguments); //log [3, 4, 5], arguments is an object with all arguments pass to function
+    //it has a lenght properties
+    return a + b;
+};
+
+add(3, 4, 5); //13
+
+var add = function(a,b){
+    arguments.slice(0, 1); //error, arguments dont have slice prop
+    return a + b;
+}
+
+/*    Constructors    */
+/* Constructor is a function thats return a n object*/
+var AnimalMaker = function(name) {
+    return {
+        speak: function() {
+            console.log("My name is ", name);
+        },
+        name: name,
+        owner: 'cerm'
+    };
+};
+
+var myAnimal = AnimalMaker('Laika');
+myAnimal.speak(); //'My name is Laika'
+myAnimal['speak'](); //'My name is Laika'
+
+var animalNames = ['Sheep', 'Liger', 'Big Bird'];
+
+var farm = [];
+
+for(var i = 0; i < animalNames.length; i++){
+    farm[i] = AnimalMaker(animalNames[i]);
+	farm[i].speak();
+}
+/* 'My name is Sheep'
+   'My name is Liger'
+   'My name is Big Bird'*/
+

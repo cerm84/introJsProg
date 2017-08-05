@@ -33,7 +33,24 @@ animals[animals.length] = quackers;
 
 var doggie = {username: 'Laika', tagline: "I'm a space dog", noises: ['guau', 'goof', 'bark']};
 var dragon = {username: 'Valerion', tagline: 'I conquer the 7 kingdoms', noises: ['wooshh', 'whaarrr', 'want hobbit for dinner']}
-animals.push(doggie);
-animals.push(dragon);
-console.log(animals);
+animals.push(doggie, dragon);
+//console.log(animals);
 
+var friendList = [];
+var friends = [];
+
+friends.push(animals[0]['username']);
+friends.push(animals[1]['username']);
+
+var relationships = {};
+relationships.friends = friends;
+
+var matches = [];
+relationships.matches = matches;
+relationships.matches.push(animals[2]['username']);
+
+for (var i = 0; i < animals.length; i++){
+    animals[i].relationships = relationships;
+};
+
+console.log(animals);
