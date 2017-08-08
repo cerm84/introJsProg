@@ -125,3 +125,11 @@ for(var i = 0; i < animalNames.length; i++){
    'My name is Liger'
    'My name is Big Bird'*/
 
+/*    NESTING    */
+box = {};
+box['innerBox'] = {};
+box['innerBox']['full'] = true;
+box['innerBox']['babyBox'] = {};
+var bb = box['innerBox']['babyBox'];
+box['innerBox'].babyBox.says = 'whats up';
+bb; // {'says': 'whats up'}, fi the value store in the variable is an object it points to its values.
