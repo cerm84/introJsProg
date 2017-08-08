@@ -133,3 +133,51 @@ box['innerBox']['babyBox'] = {};
 var bb = box['innerBox']['babyBox'];
 box['innerBox'].babyBox.says = 'whats up';
 bb; // {'says': 'whats up'}, fi the value store in the variable is an object it points to its values.
+
+
+/*    SCOPE    */
+var box = {} //this variable is store in the main scope, its is call wondow to
+var exampleFunc = function() {
+    var boxOpener = [];//this is a local variable, its scope is inside the function
+    boxSealer = 'this is an example varialbe'; //this variable is in the window, it doesn't have the var
+    //declaration so is a global variable (watch out those var's)
+}
+
+
+var g = 'global';
+
+function blender(fruit) {
+    var b = fruit;//variable inside blender() scope
+    var y = 'yogurt';
+
+    function bs() {
+        //bs() is inside of the blender() scope
+        var x = 'sugar';//variable inside bs() scope
+        alert(b + ' and '+ y + ' makes ' + b + ' swirl'); 
+    }
+    bs()
+}
+
+blender('blueberry');
+
+var g = 'global';
+function go() {
+    var l = 'local';
+    var g = 'in here!';
+    alert(g + " inside go"); //g will store the value nearest the actual scope overriding the
+    //value of the outside scope
+}
+
+go();
+alert(g +" outside go"); //g its again the variable from that scope
+
+/* ------------------*/
+var inBlock = false;
+
+for(var i=0; i < 5; i++){
+    var inBlock = true;
+}
+
+if(inBlock){
+    console.log('Is there block scope? ' + !inBlock);//watch out ! negates the value of inBlock
+}
