@@ -181,3 +181,152 @@ for(var i=0; i < 5; i++){
 if(inBlock){
     console.log('Is there block scope? ' + !inBlock);//watch out ! negates the value of inBlock
 }
+
+
+/*****************CLOSURE******************* */
+
+var closureAlert = function(){
+    var x = "Help I'm a variable stuck in a closure!";
+    var alerter = function(){
+        alert(x);
+    };
+    setTimeout(alerter, 1000);//it will schechdule the function in 1 second (1000 miliseconds)
+
+    console.log('Will run right after');// it will run before the second above
+};
+
+closureAlert();
+
+var closureAlert = function() {
+    var x = 0;
+    var alerter = function() {
+        alert(++x);//++x adds and then alert, x++ alerts and then add...
+    };
+    return alerter;
+};
+
+var funcStorer = closureAlert();// it store only alerter() (wich adds 1 to x)
+var funcStorer2 = closureAlert();// it store only alerter() (wich adds 1 to x)
+funcStorer();//1, it creates its own scope with acces to the variables of the parent of alerter (x)
+funcStorer2(); //1, different scope of a variant of alerter
+//closure is used to make classes
+
+/********************** */
+var add = function(num) {
+    var num1 = num;
+    var addTonum = function(num2){
+        return num1 + num2;
+    };
+
+    return addTonum;
+};
+var add5 = add(5);
+add5(2); //7
+
+var add10 = add(10);
+add10(2);//12
+
+/******************************** */
+
+function counter() {
+    var n = 0;
+    return{
+        count: function(){return ++n; },
+        reset: function () {n = 0; }
+    }
+}
+
+var myCounter = counter();
+myCounter.count(); //1
+myCounter.count(); //2
+myCounter.reset(); //undefined (only turns x to 0)
+myCounter.count(); //1 (again)
+
+/****************************** */
+
+var sayAlice = function() {
+    var makeLog = function() {
+        console.log(alice);
+    };
+    var alice = 'Why hello there, Alice!';
+
+    return makeLog;
+};
+
+var sayName = sayAlice();
+sayName(); //'Why hello there, Alice!'
+
+/******************************** */
+
+var makeStopWatch = function() {
+    console.log('initialized');
+    var elapsed = 0;
+    console.log(elapsed);//this code only runs the first time we assing makeStopWatch to a variable
+
+    var stopwatch = function () {
+        console.log('stopwatch');
+        return elapsed;// returns the current alapsed of the variable scope
+    };
+
+    var increase = function () {
+        elapsed++;
+    };
+    setInterval(increase, 1000);//increase elapse by 1 every second in the variable scope
+
+    return stopwatch;
+};
+
+var x = makeStopWatch();
+
+/**************MODULE PATTERN********************* */
+var Car = function () {
+    var gasolineLevel = 10;
+
+    function useGas(amt) {
+        if (gasolineLevel - amt < 0) {
+            console.log('out of gas :[');
+        } else {
+            gasolineLevel -= amt;
+        }
+    };
+    return {
+        radioStation: "104.5",
+        changeStation: function (station) {
+            this.radioStation = station;
+        },
+        go: function (speed) {
+            useGas(speed);
+        }
+    };
+};
+//with closure you can meka functions that are only avaliable for the scope of the functions itself
+
+/************* HIGH ORDER FUNCTIONS AND CALLBACKS *************** */
+//fUNCTION AS AN IMPUT
+element.addEventListener("click", function () {
+    console.log("element clicked!");
+});
+
+//Callbacks
+var ifElse = function (condition, isTrue, isFalse) {
+    if (condition) {
+        isTrue();
+    } else {
+        isFalse();
+    }
+};
+
+var logTrue = function(){console.log(true);};
+var logFalse = function(){console.log(false);};
+
+ifElse(false, logTrue, logFalse);
+
+/****************** */
+var increment = function (n) { return n+1;};
+var square = function(n) { return n*n; };
+
+var doMathSoIDontHaveTo = function (n, func) { return func(n); };
+
+doMathSoIDontHaveTo(5, square);
+
+doMathSoIDontHaveTo(4, increment);
