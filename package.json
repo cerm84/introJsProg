@@ -1,0 +1,25 @@
+{
+  "name": "introJsProg",
+  "version": "1.0.0",
+  "description": "For introduction to JS programing from Frontend Masters",
+  "main": "cellStore.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cerm84/introJsProg.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cerm84/introJsProg/issues"
+  },
+  "homepage": "https://github.com/cerm84/introJsProg#readme",
+  "dependencies": {
+    "@types/underscore": "^1.8.1",
+    "typescript": "^2.4.2",
+    "underscore": "^1.8.3"
+  }
+}

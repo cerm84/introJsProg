@@ -330,3 +330,36 @@ var doMathSoIDontHaveTo = function (n, func) { return func(n); };
 doMathSoIDontHaveTo(5, square);
 
 doMathSoIDontHaveTo(4, increment);
+
+/*********** UNDERSCORE.js ********************* */
+_.each([1, 2, 3], function (val, i, list) {
+    console.log(val);
+});
+//_.each evaluates the function 3 times (1 for each element), each invocation is called with  three
+// arguments in teh form of (element value, index, and the whole list)
+//fi 'list' is a object the iterator will be (value, key, list)
+
+var pocketmon = ['Charisaur', 'Bulbazard', 'Twomew'];
+
+var logger = function(val) {
+    console.log(val);
+};
+
+_.each(pocketmon, logger);
+
+var animalNames = ['Smokey', 'Fluffy', 'Trigger'];
+
+_.each(animalNames, function(name, index, list){
+    farm.push(AnimalMaker(name));
+});
+
+var nums = _.map([1, 2, 3], function(v, i, list){return v;});
+//map return an array of evaluated values
+
+var excitedArr = function (val) {
+    return val + '!!!';
+};
+
+var excitedPocketmon = _.map(pocketmon, excitedArr);
+
+farm = _.map(animalNames, AnimalMaker);
